@@ -1,0 +1,276 @@
+:root {
+  --bg-base: #f2ede3;
+  --bg-surface: #fff8ee;
+  --bg-surface-2: #fffdf6;
+  --ink: #22221e;
+  --ink-soft: #5f5a4e;
+  --line: #ddd2be;
+  --accent: #1f7a65;
+  --accent-2: #f4a259;
+  --danger: #bb2d3b;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 10%, #fff9ef, var(--bg-base));
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.authPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.authCard {
+  width: min(460px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--bg-surface), var(--bg-surface-2));
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(57, 45, 21, 0.12);
+}
+
+.authCard h1 {
+  font-size: 30px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.authSubtitle {
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.authForm {
+  display: grid;
+  gap: 14px;
+}
+
+.authForm label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+.authForm input,
+.searchInput,
+.titleInput,
+.markdownInput {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.primaryButton,
+.ghostButton,
+.dangerButton {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+.primaryButton:hover,
+.ghostButton:hover,
+.dangerButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton {
+  background: var(--accent);
+  color: #fff;
+}
+
+.ghostButton {
+  background: #efe5d4;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.dangerButton {
+  background: var(--danger);
+  color: #fff;
+}
+
+.errorText {
+  color: #ab1e2a;
+  font-size: 14px;
+}
+
+.notesLayout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  background: #f7efdf;
+  padding: 18px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 14px;
+}
+
+.sidebarTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebarTop h2 {
+  font-size: 20px;
+}
+
+.notesList {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.noteItem {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.noteItem span {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.noteItem.active {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(31, 122, 101, 0.35);
+}
+
+.editorArea {
+  padding: 22px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.editorHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.titleInput {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.saveStatus {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.editorGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  min-height: calc(100vh - 180px);
+}
+
+.markdownInput {
+  min-height: 100%;
+  resize: vertical;
+}
+
+.previewPane {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.previewPane h1,
+.previewPane h2,
+.previewPane h3,
+.previewPane p,
+.previewPane ul,
+.previewPane ol,
+.previewPane pre {
+  margin-bottom: 12px;
+}
+
+.previewPane code {
+  background: #f3efe8;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+.previewPane pre code {
+  display: block;
+  padding: 10px;
+}
+
+.emptyState {
+  border: 1px dashed var(--line);
+  border-radius: 18px;
+  background: #fff;
+  padding: 24px;
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+}
+
+@media (max-width: 980px) {
+  .notesLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .editorGrid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}

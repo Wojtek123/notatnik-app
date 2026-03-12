@@ -3,8 +3,6 @@
 "use client";
 
 import { signOut } from "next-auth/react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 type Note = {
@@ -96,7 +94,7 @@ export default function NotesApp() {
         setDirty(false);
         await loadNotes(query.trim());
       } else {
-        setSaveStatus("Blad zapisu");
+        setSaveStatus("Błąd zapisu");
       }
     }, 1000);
 
@@ -128,7 +126,7 @@ export default function NotesApp() {
       return;
     }
 
-    const shouldDelete = window.confirm("Na pewno usunac notatke?");
+    const shouldDelete = window.confirm("Na pewno usunąć notatkę?");
     if (!shouldDelete) {
       return;
     }
@@ -156,7 +154,7 @@ export default function NotesApp() {
 
         <input
           className="searchInput"
-          placeholder="Szukaj po tytule i tresci"
+          placeholder="Szukaj po tytule i treści"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -200,7 +198,7 @@ export default function NotesApp() {
                 maxLength={120}
               />
               <button className="dangerButton" type="button" onClick={deleteNote}>
-                Usun
+                Usuń
               </button>
             </div>
 
@@ -216,17 +214,14 @@ export default function NotesApp() {
                 }}
                 placeholder="Pisz w Markdown..."
               />
-              <div className="previewPane">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content || "_Podglad notatki_"}</ReactMarkdown>
-              </div>
             </div>
           </>
         ) : (
           <div className="emptyState">
             <h3>Brak notatek</h3>
-            <p>Utworz pierwsza notatke, aby zaczac.</p>
+            <p>Utwórz pierwszą notatkę, aby zacząć.</p>
             <button className="primaryButton" onClick={createNote} type="button">
-              Utworz notatke
+              Utwórz notatkę
             </button>
           </div>
         )}
